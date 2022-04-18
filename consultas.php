@@ -30,19 +30,38 @@
 		if (mysqli_num_rows($data) > 0) {
 			return true;
 		} else {
-			echo false;
+			return false;
 		}
 		cerrarConexion($DDBB);
 	}
 
 
 	function getPermisos() {
-		// Completar...	
+		$DDBB = crearConexion();
+		$query = "SELECT Autenticación FROM setup";
+		$data = mysqli_query($DDBB, $query);
+		if (mysqli_num_rows($data) > 0) {
+			$permission = mysqli_fetch_assoc($data);
+			return $permission["Autenticación"];
+		} else {
+			echo "Error, no hay valor almacenado en la columna 'Autenticación'";
+		}
+		cerrarConexion($DDBB);
 	}
 
 
 	function cambiarPermisos() {
-		// Completar...	
+		$currentPermission = getPermisos();
+		$newPermission = $currentPermission === 1 ? 0 : 1;
+		$DDBB = crearConexion();
+		$query = "UPDATE setup SET Autenticación = " . $newPermission;   
+		$data = mysqli_query($DDBB, $query);
+		if ($data) {
+			return $data;
+		} else {
+			echo "Error, no se pudo editar";
+		}
+		cerrarConexion($DDBB);
 	}
 
 
@@ -52,7 +71,15 @@
 
 
 	function getListaUsuarios() {
-		// Completar...	
+		$DDBB = crearConexion();
+		$query = "SELECT FullName, Enabled, Email FROM user ORDER BY FullName ASC";
+		$data = mysqli_query($DDBB, $query);
+		if (mysqli_num_rows($data) > 0) {
+			return $data;
+		} else {
+			echo "Error, no hay usuario en el sistema";
+		}
+		cerrarConexion($DDBB);
 	}
 
 
