@@ -15,7 +15,7 @@
 			<h1> Te damos la bienvenida, " . $name . "</h1>
 			<h2>No tienes permisos para acceder</h2>
 			";
-		} else {
+		} else if ($userType === "no registrado") {
 			echo "
 			<h1> Te damos la bienvenida Usuario no registrado</h1>
 			";
