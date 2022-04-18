@@ -6,13 +6,16 @@
 		$user = "root";
 		$pass = "";
 		$baseDatos = "pac3_daw";
-
-		// Completar...
+		$conexion = mysqli_connect($host, $user, $pass, $baseDatos);
+		if (!$conexion) {
+			die("<p>Error al conectar con la BBSS: " . mysqli_connect_error() . "</p>");
+		}
+		return $conexion;
 	}
 
 
 	function cerrarConexion($conexion) {
-		// Completar...
+		mysqli_close($conexion);
 	}
 
 
