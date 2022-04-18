@@ -89,7 +89,15 @@
 
 
 	function getProductos($orden) {
-		// Completar...	
+		$DDBB = crearConexion();
+		$query = "SELECT FullName, Enabled, Email FROM user ORDER BY '" . $orden "' ASC";
+		$data = mysqli_query($DDBB, $query);
+		if (mysqli_num_rows($data) > 0) {
+			return $data;
+		} else {
+			echo "No hay nada en la lista de ciudades.";
+		}
+		cerrarConexion($DB);
 	}
 
 
