@@ -52,7 +52,7 @@
 
 	function cambiarPermisos() {
 		$currentPermission = getPermisos();
-		$newPermission = $currentPermission === 1 ? 0 : 1;
+		$newPermission = $currentPermission === '1' ? 0 : 1;
 		$DDBB = crearConexion();
 		$query = "UPDATE setup SET Autenticación = " . $newPermission;   
 		$data = mysqli_query($DDBB, $query);
