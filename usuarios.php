@@ -9,7 +9,6 @@
 <body>
 
 	<?php 
-		include "utilidades.php";
 		include "funciones.php";
 		if (isset($_COOKIE['userType']) && $_COOKIE['userType'] === "superadmin") {
 			echo "<h1>Página de usuarios</h1>";
@@ -23,7 +22,7 @@
 			if (isset($_GET["permissionType"])) {
 				cambiarPermisos();
 			}
-			getUsersList();
+			pintaTablaUsuarios()();
 
 		}
 

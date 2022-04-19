@@ -8,7 +8,6 @@
 <body>
 	<h1>Lista de artículos</h1>
 	<?php 
-		include "utilidades.php";
 		include "funciones.php";
 		if (isset($_COOKIE['userType']) && $_COOKIE['userType'] === "autorizado") {
 			if (!isset($_GET['order'])) {
@@ -48,7 +47,7 @@
 						</form>
 					</tr>
 			";
-			getProductsList($order, $permissions);
+			pintaProductos($order);
 		}
 	?>
 	<a href="index.php">Volver al inicio</a>
