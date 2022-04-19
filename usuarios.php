@@ -15,12 +15,12 @@
 			echo "<h1>Página de usuarios</h1>";
 			echo "<h2>Permisos actuales: " . getPermisos() . "</h2>";
 			echo "
-				<form action='usuarios.php' method='post'>
+				<form action='usuarios.php' method='get'>
 					<input name='permissionType' value='" .  getPermisos() . "' class='button'>
 					<button type='submit'class='button'>Cambiar valor de permisos</button>
 				</form>
 			";
-			if (isset($_POST["permissionType"])) {
+			if (isset($_GET["permissionType"])) {
 				cambiarPermisos();
 			}
 			getUsersList();
