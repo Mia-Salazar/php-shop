@@ -50,4 +50,35 @@
 			echo "</table>";
 		};
 	}
+
+	function getProductsList($order, $permissions) {
+		$data = getProductos($order);
+		if (is_string($data)) {
+			echo $data;
+		} else {
+			while ($row = mysqli_fetch_assoc($data)) {
+				echo "
+					<tr>
+						<td>" . $row["ProductID"] . "</td>
+						<td>" . $row["Name"] . "</td>
+						<td>" . $row["Cost"] . "</td>
+						<td>" . $row["Price"] . "</td>
+						<td>" . $row["Category"] . "</td>
+						<td>";
+				if ($permissions === '1') {
+					echo "<a href='formArticulos.php?edit=" . $row["ProductID"] . "' >Editar</a>";
+					echo "<a href='formArticulos.php?delete=" . $row["ProductID"] . "' >Eliminar</a>";
+				}
+				echo "</td>
+					</tr>";
+			};
+			echo "</table>";
+		};
+	}
+
+	function getActions($permissions, $id) {
+		if ($permissions === '1') {
+
+		}
+	}
 ?>
