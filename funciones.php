@@ -4,7 +4,18 @@
 
 
 	function pintaCategorias($defecto) {
-		// Completar...	
+		$data = getCategorias();
+		if (is_string($data)) {
+			echo $data;
+		} else {
+			while ($row = mysqli_fetch_assoc($data)) {
+				if ($defecto == $row["CategoryID"]) {
+					echo "<option selected='true' value='" . $row["CategoryID"] . "'>" . $row["Name"] . "</option>";
+				} else {
+					echo "<option value='" . $row["CategoryID"] . "'>" . $row["Name"] . "</option>";
+				}
+			}
+		};
 	}
 	
 
