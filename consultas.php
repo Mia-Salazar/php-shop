@@ -66,7 +66,15 @@
 
 
 	function getCategorias() {
-		// Completar...	
+		$DDBB = crearConexion();
+		$query = "SELECT Name, CategoryID FROM category ORDER BY Name ASC";
+		$data = mysqli_query($DDBB, $query);
+		if (mysqli_num_rows($data) > 0) {
+			return $data;
+		} else {
+			echo "No hay nada en la lista de ciudades.";
+		}
+		cerrarConexion($DB);
 	}
 
 
@@ -84,35 +92,74 @@
 
 
 	function getProducto($ID) {
-		// Completar...	
+		$DDBB = crearConexion();
+		$query = "SELECT ProductID, Name, Cost, Price, CategoryID FROM product WHERE ProductID = '" . $ID . "'";
+		$data = mysqli_query($DDBB, $query);
+		if (mysqli_num_rows($data) > 0) {
+			$product = mysqli_fetch_assoc($data);
+			return $product;
+		} else {
+			echo "Error, no hay producto con este ID";
+		}
+		cerrarConexion($DDBB);	
 	}
 
 
 	function getProductos($orden) {
 		$DDBB = crearConexion();
-		$query = "SELECT product.ProductID, product.Name, product.Cost, product.Price, category.Name as Category FROM product INNER JOIN category ON category.CategoryID = product.CategoryID ORDER BY " . $orden . " ASC";
+		$query = "SELECT product.ProductID, product.Name, product.Cost, product.Price, category.Name as Category FROM product INNER JOIN category ON category.CategoryID = product.CategoryID ORDER BY '" . $orden . "' ASC";
 		$data = mysqli_query($DDBB, $query);
 		if (mysqli_num_rows($data) > 0) {
 			return $data;
 		} else {
-			echo "No hay nada en la lista de ciudades.";
+			echo "No hay nada en la lista de productos.";
 		}
 		cerrarConexion($DB);
 	}
 
 
 	function anadirProducto($nombre, $coste, $precio, $categoria) {
-		// Completar...	
+		$DDBB = crearConexion();
+		$query = "INSERT INTO product (Name, Cost, Price, CategoryID) 
+				VALUES ('$nombre', '$coste', '$precio', '$categoria')";  
+		$data = mysqli_query($DDBB, $query);
+		if ($data) {
+			return $data;
+		} else {
+			echo "Error, no se pudo añadir";
+		}
+		cerrarConexion($DDBB);	
 	}
 
 
 	function borrarProducto($id) {
-		// Completar...	
+		$DDBB = crearConexion();
+		$query = "DELETE FROM product WHERE ProductID = '" . $id . "'";
+		$data = mysqli_query($DDBB, $query);
+		if ($data) {
+			return $data;
+		} else {
+			echo "Error, no se pudo eliminar";
+		}
+		cerrarConexion($DB);
 	}
 
 
 	function editarProducto($id, $nombre, $coste, $precio, $categoria) {
-		// Completar...	
+		$DDBB = crearConexion();
+		$query = "UPDATE product SET Name = '" . $nombre . "'" .
+				", CountryCode = '" . $code . "'" .
+				", Cost = '" . $coste . "'" . 
+				", Price =" . $precio . 
+				", CategoryID =" . $categoria . 
+				" WHERE ID =" . $id;   
+		$data = mysqli_query($DDBB, $query);
+		if ($data) {
+			return $data;
+		} else {
+			echo "Error, no se pudo editar";
+		}
+		cerrarConexion($DDBB);		
 	}
 
 ?>
