@@ -7,7 +7,6 @@
 	<title>Usuarios</title>
 </head>
 <body>
-
 	<?php 
 		include "funciones.php";
 		if (isset($_COOKIE['userType']) && $_COOKIE['userType'] === "superadmin") {
@@ -16,20 +15,20 @@
 				cambiarPermisos();
 				$permission = getPermisos();
 			}
-			echo "<h1>Página de usuarios</h1>";
-			echo "<h2>Permisos actuales:" . $permission  . "</h2>";
+			echo "<p>Los permisos actuales están a " . $permission  . "</p><br>";
 			echo "
 				<form action='usuarios.php' method='post'>
-					<input type='submit' name='permissionType' value='Cambiar valor de permisos'>
+					<input type='submit' name='permissionType' value='Cambiar permisos'>
 				</form>
 			";
-
 			pintaTablaUsuarios();
 
+		} else {
+			echo "<p>No tienes permiso para estar aquí.</p>";
 		}
 
 	?>
-	<a href="index.php" class="navigation">Volver atrás</a>
+	<a href="index.php">Volver al inicio</a>
 
 </body>
 </html>
