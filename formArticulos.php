@@ -51,6 +51,8 @@
 				}
 
 			}
+		} else {
+			echo "<p>No tienes permiso para estar aquí</p>";
 		}
 	?>
 	<form action="formArticulos.php" method="POST">
@@ -80,5 +82,6 @@
 		?>
 	</form>
 	<?php echo $feedback ?>
+	<a href="index.php">Volver al inicio</a>
 </body>
 </html>

@@ -7,21 +7,39 @@
 </head>
 <body>
 	<form method="post" action="index.php" class="form">
-		<label class="label" for="FullName">Nombre</label>
-		<input class="input" id="FullName" placeholder="escribe tu nombre" name="FullName" type="text" />
-		<label class="label" for="Email">Email</label>
-		<input class="input" id="Email" placeholder="escribe tu email" name="Email" type="email" />
-		<button class="button" type="submit">Enviar</button>
+		<label for="FullName">Usuario: </label>
+		<input id="FullName" placeholder="Escribe tu nombre" name="FullName" type="text" />
+		<br><br>
+		<label for="Email">Correo: </label>
+		<input id="Email" placeholder="Escribe tu email" name="Email" type="email" />
+		<br><br>
+		<button type="submit">Enviar</button>
 	</form>	
 	<?php
 		include "consultas.php";
-		include "utilidades.php";
 		if(isset($_POST["FullName"]) && isset($_POST["Email"])) {
 			$userType = tipoUsuario($_POST["FullName"], $_POST["Email"]);
+			$name = $_POST["FullName"];
 			if ($userType !== "no registrado") {
 				setcookie("userType", $userType, time() + 7200);
 			}
-			getLoginStructure($userType, $_POST["FullName"]);
+			if ($userType === "superadmin") {
+				echo "
+				<p> Bienvenido, " . $name . ". Pulsa <a href='usuarios.php' class='navigation'>AQUÍ</a> para entrar al panel de usuarios</p>
+				";
+			} else if ($userType === "autorizado") {
+				echo "
+				<p> Bienvenido, " . $name . ". Pulsa <a href='usuarios.php' class='navigation'>AQUÍ</a> para entrar al panel de artículos</p>
+				";
+			} else if ($userType === "registrado") {
+				echo "
+				<p> Bienvenido, " . $name . ". No tienes permisos para acceder</p>
+				";
+			} else if ($userType === "no registrado") {
+				echo "
+				<p>El usuario no está registrado en el sistema</p>
+				";
+			}
 		}
 
 	?>

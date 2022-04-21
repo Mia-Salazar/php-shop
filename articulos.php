@@ -22,32 +22,27 @@
 			echo "
 				<table> 
 					<tr>
-						<form action='articulos.php' method='get'>
-							<th>
-								<label>ID</label>
-								<input type='submit' name='order' value='product.ProductID'>
-							</th>
-							<th>
-								<label>Nombre</label>
-								<input type='submit' name='order' value='Name'>
-							</th>
-							<th>
-								<label>Coste</label>
-								<input type='submit' name='order' value='Cost'>
-							</th>
-							<th>
-								<label>Precio</label>
-								<input type='submit' name='order' value='Price'>
-							</th>
-							<th>
-								<label>Categoría</label>
-								<input type='submit' name='order' value='category.Name'>
-							</th>
-							<th>Acciones</th>
-						</form>
+						<th>
+							<a href='articulos.php?order=product.ProductID'>ID</a>
+						</th>
+						<th>
+							<a href='articulos.php?order=Name'>Nombre</a>
+						</th>
+						<th>
+							<a href='articulos.php?order=Cost'>Coste</a>
+						</th>
+						<th>
+							<a href='articulos.php?order=Price'>Precio</a>
+						</th>
+						<th>
+							<a href='articulos.php?order=category.Name'>Categoría</a>
+						</th>
+						<th>Acciones</th>
 					</tr>
 			";
 			pintaProductos($order);
+		} else {
+			echo "<p>No tienes permiso para estar aquí.</p>";
 		}
 	?>
 	<a href="index.php">Volver al inicio</a>
