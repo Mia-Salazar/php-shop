@@ -19,27 +19,6 @@
 			if ($permissions === '1') {
 				echo "<a href='formArticulos.php?Anadir'>Añadir producto</a>";
 			}
-			echo "
-				<table> 
-					<tr>
-						<th>
-							<a href='articulos.php?order=product.ProductID'>ID</a>
-						</th>
-						<th>
-							<a href='articulos.php?order=Name'>Nombre</a>
-						</th>
-						<th>
-							<a href='articulos.php?order=Cost'>Coste</a>
-						</th>
-						<th>
-							<a href='articulos.php?order=Price'>Precio</a>
-						</th>
-						<th>
-							<a href='articulos.php?order=category.Name'>Categoría</a>
-						</th>
-						<th>Acciones</th>
-					</tr>
-			";
 			pintaProductos($order);
 		} else {
 			echo "<p>No tienes permiso para estar aquí.</p>";
