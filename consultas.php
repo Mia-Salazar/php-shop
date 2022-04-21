@@ -67,12 +67,12 @@
 
 	function getCategorias() {
 		$DDBB = crearConexion();
-		$query = "SELECT Name, CategoryID FROM category ORDER BY Name ASC";
+		$query = "SELECT CategoryID, Name FROM category ORDER BY Name ASC";
 		$data = mysqli_query($DDBB, $query);
 		if (mysqli_num_rows($data) > 0) {
 			return $data;
 		} else {
-			echo "No hay nada en la lista de categorías.";
+			echo "No hay nada en la lista de categorías";
 		}
 		cerrarConexion($DB);
 	}
@@ -80,7 +80,7 @@
 
 	function getListaUsuarios() {
 		$DDBB = crearConexion();
-		$query = "SELECT FullName, Enabled, Email FROM user ORDER BY FullName ASC";
+		$query = "SELECT FullName, Email, Enabled FROM user ORDER BY FullName ASC";
 		$data = mysqli_query($DDBB, $query);
 		if (mysqli_num_rows($data) > 0) {
 			return $data;
