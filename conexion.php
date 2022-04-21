@@ -8,7 +8,7 @@
 		$baseDatos = "pac3_daw";
 		$conexion = mysqli_connect($host, $user, $pass, $baseDatos);
 		if (!$conexion) {
-			die("<p>Error al conectar con la BBSS: " . mysqli_connect_error() . "</p>");
+			die("<p>Error al conectar con la BBDD: " . mysqli_connect_error() . "</p>");
 		}
 		return $conexion;
 	}

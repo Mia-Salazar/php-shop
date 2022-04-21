@@ -15,7 +15,7 @@
 					echo "<option value='" . $row["CategoryID"] . "'>" . $row["Name"] . "</option>";
 				}
 			}
-		};
+		}
 	}
 	
 
@@ -36,7 +36,7 @@
 				echo "<tr>
 						<td>" . $row["FullName"] . "</td>
 						<td>" . $row["Email"] . "</td>";
-				if ($row["Enabled"] == "1") {
+				if ($row["Enabled"] === "1") {
 					echo "<td class='rojo'>" . $row["Enabled"] . "</td>";
 				} else {
 					echo "<td>" . $row["Enabled"] . "</td>";
