@@ -6,7 +6,7 @@
 	<title>Index.php</title>
 </head>
 <body>
-	<form method="post" action="index.php" class="form">
+	<form method="post" action="index.php">
 		<label for="FullName">Usuario: </label>
 		<input id="FullName" placeholder="Escribe tu nombre" name="FullName" type="text" />
 		<br><br>
@@ -25,11 +25,11 @@
 			}
 			if ($userType === "superadmin") {
 				echo "
-				<p> Bienvenido, " . $name . ". Pulsa <a href='usuarios.php' class='navigation'>AQUÍ</a> para entrar al panel de usuarios</p>
+				<p> Bienvenido, " . $name . ". Pulsa <a href='usuarios.php'>AQUÍ</a> para entrar al panel de usuarios</p>
 				";
 			} else if ($userType === "autorizado") {
 				echo "
-				<p> Bienvenido, " . $name . ". Pulsa <a href='usuarios.php' class='navigation'>AQUÍ</a> para entrar al panel de artículos</p>
+				<p> Bienvenido, " . $name . ". Pulsa <a href='articulos.php'>AQUÍ</a> para entrar al panel de artículos</p>
 				";
 			} else if ($userType === "registrado") {
 				echo "

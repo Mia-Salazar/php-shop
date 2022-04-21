@@ -64,12 +64,14 @@
 						<td>" . $row["Category"] . "</td>
 						<td>";
 				if ($permissions === '1') {
-					echo "
-						<form action='formArticulos.php' method='post'>
-							<input type='hidden' name='id' value='" . $row["ProductID"] . "'>
-							<input type='submit' name='editOrDelete' value='delete'> - 
-							<input type='submit' name='editOrDelete' value='edit'>
-						</form>";
+					// echo "
+					// 	<form action='formArticulos.php' method='post'>
+					// 		<input type='hidden' name='id' value='" . $row["ProductID"] . "'>
+					// 		<input type='submit' name='editOrDelete' value='delete'> - 
+					// 		<input type='submit' name='editOrDelete' value='edit'>
+					// 	</form>";
+					echo "<a href='formArticulos.php?Editar=" . $row["ProductID"] . "' >Editar</a> - 
+					<a href='formArticulos.php?Borrar=" . $row["ProductID"] . "' >Eliminar</a>";
 				}
 				echo "</td>
 					</tr>";

@@ -17,7 +17,7 @@
 			}
 			$permissions = getPermisos();
 			if ($permissions === '1') {
-				echo "<a href='formArticulos.php' class='button'>Añadir producto</a>";
+				echo "<a href='formArticulos.php?Anadir'>Añadir producto</a>";
 			}
 			echo "
 				<table> 

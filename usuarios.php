@@ -28,7 +28,7 @@
 		}
 
 	?>
-	<a href="index.php" class="navigation">Volver al inicio</a>
+	<a href="index.php">Volver al inicio</a>
 
 </body>
 </html>

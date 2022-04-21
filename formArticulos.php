@@ -11,21 +11,21 @@
 		include "funciones.php";
 		if (isset($_COOKIE['userType']) && $_COOKIE['userType'] === "autorizado") {
 			$feedback = "";
-			if (!isset($_POST['editOrDelete'])) {
+			if (isset($_GET['Anadir'])) {
 				$data = ["Name" => "", "Cost" => "", "Price" => "" ,"CategoryID" => "1", "id" => ""];
 			}
-			if(isset($_POST['editOrDelete']) && $_POST['editOrDelete'] === 'delete') {
-				$data = getProducto($_POST['id']);
-				$data['id'] = $_POST['id'];
+			if(isset($_GET['Borrar'])) {
+				$data = getProducto($_GET['Borrar']);
+				$data['id'] = $_GET['Borrar'];
 				
 			}
-			if(isset($_POST['editOrDelete']) && $_POST['editOrDelete'] === 'edit') {
-				$data = getProducto($_POST['id']);
-				$data['id'] = $_POST['id'];
+			if(isset($_GET['Editar'])) {
+				$data = getProducto($_GET['Editar']);
+				$data['id'] = $_GET['Editar'];
 			}
 			if(isset($_POST['action'])) {
 				$action = $_POST['action'];
-				if ($action === "Crear") {
+				if ($action === "Añadir") {
 					if(anadirProducto($_POST['name'], $_POST['cost'], $_POST['price'], $_POST['categoryID'])) {
 						$feedback = "Producto añadido correctamente";
 						$data = ["Name" => "", "Cost" => 0, "Price" => 0 ,"CategoryID" => "1", "id" => ""];
@@ -33,7 +33,7 @@
 						$feedback = "No se pudo añadir el producto";
 					}
 				}
-				if ($action === "Eliminar") {
+				if ($action === "Borrar") {
 					if(borrarProducto($id)) {
 						$feedback = "Producto borrado correctamente";
 						$data = ["Name" => "", "Cost" => 0, "Price" => 0 ,"CategoryID" => "1", "id" => ""];
@@ -51,37 +51,37 @@
 				}
 
 			}
+			echo "
+					<form action='formArticulos.php' method='POST'>
+						<label>ID: </label>
+						<input type='text' name='identifier' disabled value=" . $data['id'] . "><br><br>
+						<label>Nombre producto: </label>
+						<input type='text' name='name' placeholder='nombre' value=" . $data['Name'] . "><br><br>
+						<label>Coste: </label>
+						<input type='number' name='cost' placeholder='coste' value=" . $data['Cost'] . "><br><br>
+						<label>Precio: </label>
+						<input type='number' name='price' placeholder='precio' value=" . $data['Price'] . "><br><br>
+						<label>Categoría: </label>
+						<select name='categoryID'>";
+							echo  pintaCategorias($data['CategoryID']);
+						echo "</select><br><br>
+						<input type='hidden' name='id' value=" . $data['id'] . ">";
+							if (isset($_GET['Anadir'])) {
+								echo "<input type='submit' name='action' value='Añadir'>";
+							}
+							if (isset($_GET['Borrar'])) {
+								echo "<input type='submit' name='action' value='Borrar'>";
+							}
+							if (isset($_GET['Editar'])) {
+								echo "<input type='submit' name='action' value='Editar'>";
+							}
+					echo "</form>
+					<p> " . $feedback . "</p>";
 		} else {
 			echo "<p>No tienes permiso para estar aquí</p>";
 		}
 	?>
-	<form action="formArticulos.php" method="POST">
-		<label>ID</label>
-		<input type="text" name="identifier" disabled value=<?php echo $data["id"]; ?>><br>
-		<label>Nombre producto </label>
-		<input type="text" name="name" placeholder="nombre del producto" value=<?php echo $data["Name"]; ?>><br>
-		<label>Coste del producto</label>
-		<input type="number" name="cost" placeholder="coste del producto" value=<?php echo $data["Cost"]; ?>><br>
-		<label>Precio del producto</label>
-		<input type="number" name="price" placeholder="precio del producto" value=<?php echo $data["Price"]; ?>><br>
-		<label>Categoría del producto: </label>
-		<select name="categoryID">
-			<?php pintaCategorias($data["CategoryID"]); ?>	
-		</select><br>
-		<input type="hidden" name="id" value=<?php echo $data["id"]; ?>><br>
-		<?php
-			if (!isset($_POST['editOrDelete'])) {
-				echo "<input type='submit' name='action' value='Crear'>";
-			}
-			if (isset($_POST['editOrDelete']) && $_POST['editOrDelete'] === 'delete') {
-				echo "<input type='submit' name='action' value='Eliminar'>";
-			}
-			if (isset($_POST['editOrDelete']) && $_POST['editOrDelete'] === 'edit') {
-				echo "<input type='submit' name='action' value='Editar'>";
-			}
-		?>
-	</form>
-	<?php echo $feedback ?>
-	<a href="index.php">Volver al inicio</a>
+
+	<a href="articulos.php">Volver</a>
 </body>
 </html>
