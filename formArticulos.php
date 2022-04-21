@@ -28,7 +28,7 @@
 				if ($action === "Crear") {
 					if(anadirProducto($_POST['name'], $_POST['cost'], $_POST['price'], $_POST['categoryID'])) {
 						$feedback = "Producto añadido correctamente";
-						$data = ["Name" => "", "Cost" => 0, "Price" => 0 ,"CategoryID" => "1"];
+						$data = ["Name" => "", "Cost" => 0, "Price" => 0 ,"CategoryID" => "1", "id" => ""];
 					} else {
 						$feedback = "No se pudo añadir el producto";
 					}
@@ -36,8 +36,7 @@
 				if ($action === "Eliminar") {
 					if(borrarProducto($id)) {
 						$feedback = "Producto borrado correctamente";
-						$id = "";
-						$data = ["Name" => "", "Cost" => 0, "Price" => 0 ,"CategoryID" => "1"];
+						$data = ["Name" => "", "Cost" => 0, "Price" => 0 ,"CategoryID" => "1", "id" => ""];
 					} else {
 						$feedback = "No se pudo borrar el producto";
 					}
