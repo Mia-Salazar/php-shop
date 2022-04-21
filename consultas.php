@@ -52,7 +52,7 @@
 
 	function cambiarPermisos() {
 		$currentPermission = getPermisos();
-		$newPermission = $currentPermission === '1' ? 0 : 1;
+		$newPermission = $currentPermission === '1' ? '0' : '1';
 		$DDBB = crearConexion();
 		$query = "UPDATE setup SET Autenticación = " . $newPermission;   
 		$data = mysqli_query($DDBB, $query);
@@ -148,11 +148,10 @@
 	function editarProducto($id, $nombre, $coste, $precio, $categoria) {
 		$DDBB = crearConexion();
 		$query = "UPDATE product SET Name = '" . $nombre . "'" .
-				", CountryCode = '" . $code . "'" .
-				", Cost = '" . $coste . "'" . 
-				", Price =" . $precio . 
+				", Cost = '" . $coste . "'" .
+				", Price = '" . $precio . "'" . 
 				", CategoryID =" . $categoria . 
-				" WHERE ID =" . $id;   
+				" WHERE ProductID =" . $id; 
 		$data = mysqli_query($DDBB, $query);
 		if ($data) {
 			return $data;

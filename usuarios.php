@@ -11,18 +11,20 @@
 	<?php 
 		include "funciones.php";
 		if (isset($_COOKIE['userType']) && $_COOKIE['userType'] === "superadmin") {
+			$permission = getPermisos();
+			if (isset($_POST["permissionType"])) {
+				cambiarPermisos();
+				$permission = getPermisos();
+			}
 			echo "<h1>Página de usuarios</h1>";
-			echo "<h2>Permisos actuales: " . getPermisos() . "</h2>";
+			echo "<h2>Permisos actuales:" . $permission  . "</h2>";
 			echo "
-				<form action='usuarios.php' method='get'>
-					<input name='permissionType' value='" .  getPermisos() . "' class='button'>
-					<button type='submit'class='button'>Cambiar valor de permisos</button>
+				<form action='usuarios.php' method='post'>
+					<input type='submit' name='permissionType' value='Cambiar valor de permisos'>
 				</form>
 			";
-			if (isset($_GET["permissionType"])) {
-				cambiarPermisos();
-			}
-			pintaTablaUsuarios()();
+
+			pintaTablaUsuarios();
 
 		}
 
