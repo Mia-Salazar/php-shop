@@ -23,36 +23,36 @@
 				$data = getProducto($_GET['Editar']);
 				$data['id'] = $_GET['Editar'];
 			}
-			if(isset($_POST['action'])) {
-				$action = $_POST['action'];
+			if(isset($_GET['action'])) {
+				$action = $_GET['action'];
 				if ($action === "Añadir") {
-					if(anadirProducto($_POST['name'], $_POST['cost'], $_POST['price'], $_POST['categoryID'])) {
-						$feedback = "Producto añadido correctamente";
+					if(anadirProducto($_GET['name'], $_GET['cost'], $_GET['price'], $_GET['categoryID'])) {
+						$feedback = "Se ha añadido el producto";
 						$data = ["Name" => "", "Cost" => 0, "Price" => 0 ,"CategoryID" => "1", "id" => ""];
 					} else {
-						$feedback = "No se pudo añadir el producto";
+						$feedback = "No se ha añadido el producto";
 					}
 				}
 				if ($action === "Borrar") {
-					if(borrarProducto($id)) {
-						$feedback = "Producto borrado correctamente";
+					if(borrarProducto($_GET['id'])) {
+						$feedback = "Se ha borrado el producto";
 						$data = ["Name" => "", "Cost" => 0, "Price" => 0 ,"CategoryID" => "1", "id" => ""];
 					} else {
-						$feedback = "No se pudo borrar el producto";
+						$feedback = "No se ha borrado el producto";
 					}
 				}
 				if ($action === "Editar") {
-					if(editarProducto($_POST['id'], $_POST['name'], $_POST['cost'], $_POST['price'], $_POST['categoryID'])) {
-						$feedback = "Producto editado correctamente";
+					if(editarProducto($_GET['id'], $_GET['name'], $_GET['cost'], $_GET['price'], $_GET['categoryID'])) {
+						$feedback = "Se ha editado el producto";
 						$data = ["Name" => "", "Cost" => 0, "Price" => 0 ,"CategoryID" => "1", "id" => ""];
 					} else {
-						$feedback = "No se pudo editar el producto";
+						$feedback = "No se ha editado el producto";
 					}
 				}
 
 			}
 			echo "
-					<form action='formArticulos.php' method='POST'>
+					<form action='formArticulos.php' method='GET'>
 						<label>ID: </label>
 						<input type='text' name='identifier' disabled value=" . $data['id'] . "><br><br>
 						<label>Nombre producto: </label>
@@ -66,7 +66,7 @@
 							echo  pintaCategorias($data['CategoryID']);
 						echo "</select><br><br>
 						<input type='hidden' name='id' value=" . $data['id'] . ">";
-							if (isset($_GET['Anadir'])) {
+							if (isset($_GET['Anadir']) || !isset($_GET['Borrar']) && !isset($_GET['Editar'])) {
 								echo "<input type='submit' name='action' value='Añadir'>";
 							}
 							if (isset($_GET['Borrar'])) {
@@ -75,8 +75,8 @@
 							if (isset($_GET['Editar'])) {
 								echo "<input type='submit' name='action' value='Editar'>";
 							}
-					echo "</form>
-					<p> " . $feedback . "</p>";
+				echo "</form>
+					  <p> " . $feedback . "</p>";
 		} else {
 			echo "<p>No tienes permiso para estar aquí</p>";
 		}

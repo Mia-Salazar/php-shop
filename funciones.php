@@ -41,7 +41,7 @@
 				} else {
 					echo "<td>" . $row["Enabled"] . "</td>";
 				}
-					echo "</tr>";
+				echo "</tr>";
 			};
 			echo "</table>";
 		};
@@ -54,6 +54,27 @@
 		if (is_string($data)) {
 			echo $data;
 		} else {
+			echo "
+				<table> 
+					<tr>
+						<th>
+							<a href='articulos.php?order=product.ProductID'>ID</a>
+						</th>
+						<th>
+							<a href='articulos.php?order=Name'>Nombre</a>
+						</th>
+						<th>
+							<a href='articulos.php?order=Cost'>Coste</a>
+						</th>
+						<th>
+							<a href='articulos.php?order=Price'>Precio</a>
+						</th>
+						<th>
+							<a href='articulos.php?order=category.Name'>Categoría</a>
+						</th>
+						<th>Acciones</th>
+					</tr>
+			";
 			while ($row = mysqli_fetch_assoc($data)) {
 				echo "
 					<tr>
@@ -64,16 +85,10 @@
 						<td>" . $row["Category"] . "</td>
 						<td>";
 				if ($permissions === '1') {
-					// echo "
-					// 	<form action='formArticulos.php' method='post'>
-					// 		<input type='hidden' name='id' value='" . $row["ProductID"] . "'>
-					// 		<input type='submit' name='editOrDelete' value='delete'> - 
-					// 		<input type='submit' name='editOrDelete' value='edit'>
-					// 	</form>";
-					echo "<a href='formArticulos.php?Editar=" . $row["ProductID"] . "' >Editar</a> - 
-					<a href='formArticulos.php?Borrar=" . $row["ProductID"] . "' >Eliminar</a>";
+					echo       "<a href='formArticulos.php?Editar=" . $row["ProductID"] . "' >Editar</a> - 
+						        <a href='formArticulos.php?Borrar=" . $row["ProductID"] . "' >Eliminar</a>";
 				}
-				echo "</td>
+				echo 	"</td>
 					</tr>";
 			};
 			echo "</table>";

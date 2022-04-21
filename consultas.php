@@ -59,7 +59,7 @@
 		if ($data) {
 			return $data;
 		} else {
-			echo "Error, no se pudo editar";
+			echo "Error, no se pudo editar los permisos";
 		}
 		cerrarConexion($DDBB);
 	}
@@ -72,7 +72,7 @@
 		if (mysqli_num_rows($data) > 0) {
 			return $data;
 		} else {
-			echo "No hay nada en la lista de ciudades.";
+			echo "No hay nada en la lista de categorías.";
 		}
 		cerrarConexion($DB);
 	}
@@ -85,7 +85,7 @@
 		if (mysqli_num_rows($data) > 0) {
 			return $data;
 		} else {
-			echo "Error, no hay usuario en el sistema";
+			echo "Error, no hay usuarios en el sistema";
 		}
 		cerrarConexion($DDBB);
 	}
@@ -99,7 +99,7 @@
 			$product = mysqli_fetch_assoc($data);
 			return $product;
 		} else {
-			echo "Error, no hay producto con este ID";
+			echo "Error, no hay un producto con este ID";
 		}
 		cerrarConexion($DDBB);	
 	}
@@ -112,7 +112,7 @@
 		if (mysqli_num_rows($data) > 0) {
 			return $data;
 		} else {
-			echo "No hay nada en la lista de productos.";
+			echo "No hay nada en la lista de productos";
 		}
 		cerrarConexion($DB);
 	}
@@ -126,7 +126,7 @@
 		if ($data) {
 			return $data;
 		} else {
-			echo "Error, no se pudo añadir";
+			echo "Error, no se pudo añadir el producto";
 		}
 		cerrarConexion($DDBB);	
 	}
@@ -139,7 +139,7 @@
 		if ($data) {
 			return $data;
 		} else {
-			echo "Error, no se pudo eliminar";
+			echo "Error, no se pudo eliminar el producto";
 		}
 		cerrarConexion($DB);
 	}
@@ -156,7 +156,7 @@
 		if ($data) {
 			return $data;
 		} else {
-			echo "Error, no se pudo editar";
+			echo "Error, no se pudo editar el producto";
 		}
 		cerrarConexion($DDBB);		
 	}
