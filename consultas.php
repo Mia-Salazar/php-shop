@@ -25,7 +25,8 @@
 
 	function esSuperadmin($nombre, $correo){
 		$DDBB = crearConexion();
-		$query = "SELECT setup.SuperAdmin FROM user INNER JOIN setup ON user.UserID = setup.SuperAdmin WHERE FullName ='" . $nombre . "' AND Email = '" . $correo . "'";
+		$query = "SELECT setup.SuperAdmin FROM user INNER JOIN setup ON user.UserID = setup.SuperAdmin 
+		WHERE FullName ='" . $nombre . "' AND Email = '" . $correo . "'";
 		$data = mysqli_query($DDBB, $query);
 		if (mysqli_num_rows($data) > 0) {
 			return true;
@@ -107,7 +108,8 @@
 
 	function getProductos($orden) {
 		$DDBB = crearConexion();
-		$query = "SELECT product.ProductID, product.Name, product.Cost, product.Price, category.Name as Category FROM product INNER JOIN category ON category.CategoryID = product.CategoryID ORDER BY " . $orden . " ASC";
+		$query = "SELECT product.ProductID, product.Name, product.Cost, product.Price, category.Name
+		as Category FROM product INNER JOIN category ON category.CategoryID = product.CategoryID ORDER BY " . $orden . " ASC";
 		$data = mysqli_query($DDBB, $query);
 		if (mysqli_num_rows($data) > 0) {
 			return $data;

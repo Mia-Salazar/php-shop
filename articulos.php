@@ -7,6 +7,7 @@
 </head>
 <body>
 	<h1>Lista de artículos</h1>
+	<a href="index.php">Volver al inicio</a>
 	<?php 
 		include "funciones.php";
 		if (isset($_COOKIE['userType']) && $_COOKIE['userType'] === "autorizado") {
@@ -24,6 +25,5 @@
 			echo "<p>No tienes permiso para estar aquí.</p>";
 		}
 	?>
-	<a href="index.php">Volver al inicio</a>
 </body>
 </html>
