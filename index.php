@@ -20,9 +20,7 @@
 		if(isset($_POST["FullName"]) && isset($_POST["Email"])) {
 			$userType = tipoUsuario($_POST["FullName"], $_POST["Email"]);
 			$name = $_POST["FullName"];
-			if ($userType !== "no registrado") {
-				setcookie("userType", $userType, time() + 7200);
-			}
+			setcookie("userType", $userType, time() + 7200);
 			if ($userType === "superadmin") {
 				echo "
 				<p> Bienvenido, " . $name . ". Pulsa <a href='usuarios.php'>AQUÍ</a> para entrar al panel de usuarios</p>
