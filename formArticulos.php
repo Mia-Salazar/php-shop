@@ -12,12 +12,11 @@
 		if (isset($_COOKIE['userType']) && $_COOKIE['userType'] === "autorizado") {
 			$feedback = "";
 			if (isset($_GET['Anadir'])) {
-				$data = ["Name" => "", "Cost" => "", "Price" => "" ,"CategoryID" => "1", "id" => ""];
+				$data = ["Name" => "", "Cost" => 0, "Price" => 0 ,"CategoryID" => "1", "id" => ""];
 			}
 			if(isset($_GET['Borrar'])) {
 				$data = getProducto($_GET['Borrar']);
 				$data['id'] = $_GET['Borrar'];
-				
 			}
 			if(isset($_GET['Editar'])) {
 				$data = getProducto($_GET['Editar']);
