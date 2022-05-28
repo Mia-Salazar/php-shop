@@ -3,8 +3,8 @@
 	include "query.php";
 
 
-	function pintaCategorias($defecto) {
-		$data = getCategorias();
+	function showCategories($defecto) {
+		$data = getCategories();
 		if (is_string($data)) {
 			echo $data;
 		} else {
@@ -19,8 +19,8 @@
 	}
 	
 
-	function pintaTablaUsuarios(){
-		$data = getListaUsuarios();
+	function showUsers(){
+		$data = getUsersList();
 		if (is_string($data)) {
 			echo $data;
 		} else {
@@ -48,9 +48,9 @@
 	}
 
 		
-	function pintaProductos($orden) {
-		$data = getProductos($orden);
-		$permissions = getPermisos();
+	function showProducts($orden) {
+		$data = getProducts($orden);
+		$permissions = gertPermissions();
 		if (is_string($data)) {
 			echo $data;
 		} else {
