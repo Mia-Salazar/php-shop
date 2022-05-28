@@ -16,11 +16,11 @@
 			} else {
 				$order = $_GET['order'];
 			}
-			$permissions = getPermisos();
+			$permissions = gertPermissions();
 			if ($permissions === '1') {
 				echo "<a href='formArticles.php?Anadir'>Añadir producto</a>";
 			}
-			pintaProductos($order);
+			showProducts($order);
 		} else {
 			echo "<p>No tienes permiso para estar aquí.</p>";
 		}

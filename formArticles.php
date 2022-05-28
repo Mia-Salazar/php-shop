@@ -15,17 +15,17 @@
 				$data = ["Name" => "", "Cost" => 0, "Price" => 0 ,"CategoryID" => "1", "id" => ""];
 			}
 			if(isset($_GET['Borrar'])) {
-				$data = getProducto($_GET['Borrar']);
+				$data = getProduct($_GET['Borrar']);
 				$data['id'] = $_GET['Borrar'];
 			}
 			if(isset($_GET['Editar'])) {
-				$data = getProducto($_GET['Editar']);
+				$data = getProduct($_GET['Editar']);
 				$data['id'] = $_GET['Editar'];
 			}
 			if(isset($_GET['action'])) {
 				$action = $_GET['action'];
 				if ($action === "Añadir") {
-					if(anadirProducto($_GET['name'], $_GET['cost'], $_GET['price'], $_GET['categoryID'])) {
+					if(addProduct($_GET['name'], $_GET['cost'], $_GET['price'], $_GET['categoryID'])) {
 						$feedback = "Se ha añadido el producto";
 						$data = ["Name" => "", "Cost" => 0, "Price" => 0 ,"CategoryID" => "1", "id" => ""];
 					} else {
@@ -33,7 +33,7 @@
 					}
 				}
 				if ($action === "Borrar") {
-					if(borrarProducto($_GET['id'])) {
+					if(deleteProduct($_GET['id'])) {
 						$feedback = "Se ha borrado el producto";
 						$data = ["Name" => "", "Cost" => 0, "Price" => 0 ,"CategoryID" => "1", "id" => ""];
 					} else {
@@ -41,7 +41,7 @@
 					}
 				}
 				if ($action === "Editar") {
-					if(editarProducto($_GET['id'], $_GET['name'], $_GET['cost'], $_GET['price'], $_GET['categoryID'])) {
+					if(editProduct($_GET['id'], $_GET['name'], $_GET['cost'], $_GET['price'], $_GET['categoryID'])) {
 						$feedback = "Se ha editado el producto";
 						$data = ["Name" => "", "Cost" => 0, "Price" => 0 ,"CategoryID" => "1", "id" => ""];
 					} else {
@@ -62,7 +62,7 @@
 						<input type='number' name='price' placeholder='precio' value=" . $data['Price'] . "><br><br>
 						<label>Categoría: </label>
 						<select name='categoryID'>";
-							echo  pintaCategorias($data['CategoryID']);
+							echo  showCategories($data['CategoryID']);
 						echo "</select><br><br>
 						<input type='hidden' name='id' value=" . $data['id'] . ">";
 							if (isset($_GET['Anadir']) || !isset($_GET['Borrar']) && !isset($_GET['Editar'])) {

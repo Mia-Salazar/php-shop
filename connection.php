@@ -1,6 +1,6 @@
 <?php 
 
-	function crearConexion() {
+	function createConnection() {
 		// Cambiar en el caso en que se monte la base de datos en otro lugar
 		$host = "localhost";
 		$user = "root";
@@ -14,7 +14,7 @@
 	}
 
 
-	function cerrarConexion($conexion) {
+	function closeConnection($conexion) {
 		mysqli_close($conexion);
 	}
 

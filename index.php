@@ -18,7 +18,7 @@
 	<?php
 		include "query.php";
 		if(isset($_POST["FullName"]) && isset($_POST["Email"])) {
-			$userType = tipoUsuario($_POST["FullName"], $_POST["Email"]);
+			$userType = userType($_POST["FullName"], $_POST["Email"]);
 			$name = $_POST["FullName"];
 			setcookie("userType", $userType, time() + 7200);
 			if ($userType === "superadmin") {
