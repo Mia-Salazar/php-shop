@@ -8,7 +8,7 @@
 <body>
 	<?php 
 
-		include "funciones.php";
+		include "functions.php";
 		if (isset($_COOKIE['userType']) && $_COOKIE['userType'] === "autorizado") {
 			$feedback = "";
 			if (isset($_GET['Anadir'])) {
@@ -51,7 +51,7 @@
 
 			}
 			echo "
-					<form action='formArticulos.php' method='GET'>
+					<form action='formArticles.php' method='GET'>
 						<label>ID: </label>
 						<input type='text' name='identifier' disabled value=" . $data['id'] . "><br><br>
 						<label>Nombre producto: </label>
@@ -81,6 +81,6 @@
 		}
 	?>
 
-	<a href="articulos.php">Volver</a>
+	<a href="articles.php">Volver</a>
 </body>
 </html>

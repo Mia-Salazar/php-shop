@@ -1,6 +1,6 @@
 <?php 
 
-	include "consultas.php";
+	include "query.php";
 
 
 	function pintaCategorias($defecto) {
@@ -58,19 +58,19 @@
 				<table> 
 					<tr>
 						<th>
-							<a href='articulos.php?order=product.ProductID'>ID</a>
+							<a href='articles.php?order=product.ProductID'>ID</a>
 						</th>
 						<th>
-							<a href='articulos.php?order=Name'>Nombre</a>
+							<a href='articles.php?order=Name'>Nombre</a>
 						</th>
 						<th>
-							<a href='articulos.php?order=Cost'>Coste</a>
+							<a href='articles.php?order=Cost'>Coste</a>
 						</th>
 						<th>
-							<a href='articulos.php?order=Price'>Precio</a>
+							<a href='articles.php?order=Price'>Precio</a>
 						</th>
 						<th>
-							<a href='articulos.php?order=category.Name'>Categoría</a>
+							<a href='articles.php?order=category.Name'>Categoría</a>
 						</th>
 						<th>Acciones</th>
 					</tr>
@@ -85,8 +85,8 @@
 						<td>" . $row["Category"] . "</td>
 						<td>";
 				if ($permissions === '1') {
-					echo       "<a href='formArticulos.php?Editar=" . $row["ProductID"] . "' >Editar</a> - 
-						        <a href='formArticulos.php?Borrar=" . $row["ProductID"] . "' >Eliminar</a>";
+					echo       "<a href='formArticles.php?Editar=" . $row["ProductID"] . "' >Editar</a> - 
+						        <a href='formArticles.php?Borrar=" . $row["ProductID"] . "' >Eliminar</a>";
 				}
 				echo 	"</td>
 					</tr>";

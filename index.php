@@ -16,18 +16,18 @@
 		<button type="submit">Enviar</button>
 	</form>	
 	<?php
-		include "consultas.php";
+		include "query.php";
 		if(isset($_POST["FullName"]) && isset($_POST["Email"])) {
 			$userType = tipoUsuario($_POST["FullName"], $_POST["Email"]);
 			$name = $_POST["FullName"];
 			setcookie("userType", $userType, time() + 7200);
 			if ($userType === "superadmin") {
 				echo "
-				<p> Bienvenido, " . $name . ". Pulsa <a href='usuarios.php'>AQUÍ</a> para entrar al panel de usuarios</p>
+				<p> Bienvenido, " . $name . ". Pulsa <a href='users.php'>AQUÍ</a> para entrar al panel de usuarios</p>
 				";
 			} else if ($userType === "autorizado") {
 				echo "
-				<p> Bienvenido, " . $name . ". Pulsa <a href='articulos.php'>AQUÍ</a> para entrar al panel de artículos</p>
+				<p> Bienvenido, " . $name . ". Pulsa <a href='articles.php'>AQUÍ</a> para entrar al panel de artículos</p>
 				";
 			} else if ($userType === "registrado") {
 				echo "

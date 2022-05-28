@@ -1,6 +1,6 @@
 <?php 
 
-	include "conexion.php";
+	include "connection.php";
 
 	function tipoUsuario($nombre, $correo){
 		$DDBB = crearConexion();

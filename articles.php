@@ -9,7 +9,7 @@
 	<h1>Lista de artículos</h1>
 	<a href="index.php">Volver al inicio</a>
 	<?php 
-		include "funciones.php";
+		include "functions.php";
 		if (isset($_COOKIE['userType']) && $_COOKIE['userType'] === "autorizado") {
 			if (!isset($_GET['order'])) {
 				$order = "product.ProductID";
@@ -18,7 +18,7 @@
 			}
 			$permissions = getPermisos();
 			if ($permissions === '1') {
-				echo "<a href='formArticulos.php?Anadir'>Añadir producto</a>";
+				echo "<a href='formArticles.php?Anadir'>Añadir producto</a>";
 			}
 			pintaProductos($order);
 		} else {
