@@ -8,7 +8,7 @@
 </head>
 <body>
 	<?php 
-		include "funciones.php";
+		include "functions.php";
 		if (isset($_COOKIE['userType']) && $_COOKIE['userType'] === "superadmin") {
 			$permission = getPermisos();
 			if (isset($_POST["permissionType"])) {
@@ -17,7 +17,7 @@
 			}
 			echo "<p>Los permisos actuales están a " . $permission  . "</p><br>";
 			echo "
-				<form action='usuarios.php' method='post'>
+				<form action='users.php' method='post'>
 					<input type='submit' name='permissionType' value='Cambiar permisos'>
 				</form>
 			";
