@@ -37,7 +37,7 @@
 						<td>" . $row["FullName"] . "</td>
 						<td>" . $row["Email"] . "</td>";
 				if ($row["Enabled"] === "1") {
-					echo "<td class='rojo'>" . $row["Enabled"] . "</td>";
+					echo "<td class='super'>" . $row["Enabled"] . "</td>";
 				} else {
 					echo "<td>" . $row["Enabled"] . "</td>";
 				}

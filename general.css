@@ -1,8 +1,9 @@
-.rojo {
-	background: tomato;
+.super {
+	background: #EEEEEE;
 }
 
 body {
+    padding: 20px;
 	color: #787A91;
 	font-family: sans-serif;
 }
@@ -14,13 +15,19 @@ input {
     border: 1px solid #0F044C;
 }
 
+h1 {
+    margin-top: 0;
+    color: #0F044C;
+    font-size: 25px
+}
+
 label {
     margin-bottom: 5px;
 	font-size: 15px
 }
 
-button {
-	padding: 10px;
+button, .button {
+	padding: 10px 20px;
     border-radius: 5px;
     background-color: #0F044C;
     color: white;
@@ -28,4 +35,14 @@ button {
 
 a {
 	color: #0F044C;
+}
+
+th {
+    padding: 10px;
+    background-color: #eee;
+    color: #787A91;
+}
+
+td {
+    padding: 5px;
 }
