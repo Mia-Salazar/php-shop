@@ -1,0 +1,31 @@
+.rojo {
+	background: tomato;
+}
+
+body {
+	color: #787A91;
+	font-family: sans-serif;
+}
+
+input {
+	margin-bottom: 15px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #0F044C;
+}
+
+label {
+    margin-bottom: 5px;
+	font-size: 15px
+}
+
+button {
+	padding: 10px;
+    border-radius: 5px;
+    background-color: #0F044C;
+    color: white;
+}
+
+a {
+	color: #0F044C;
+}
