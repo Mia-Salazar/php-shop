@@ -8,7 +8,7 @@ body {
 	font-family: sans-serif;
 }
 
-input {
+input, select {
 	margin-bottom: 15px;
     padding: 5px;
     border-radius: 5px;
