@@ -80,13 +80,13 @@
 					<tr>
 						<td>" . $row["ProductID"] . "</td>
 						<td>" . $row["Name"] . "</td>
-						<td>" . $row["Cost"] . "</td>
-						<td>" . $row["Price"] . "</td>
+						<td>" . $row["Cost"] . "€</td>
+						<td>" . $row["Price"] . "€</td>
 						<td>" . $row["Category"] . "</td>
 						<td>";
 				if ($permissions === '1') {
-					echo       "<a href='formArticles.php?Editar=" . $row["ProductID"] . "' >Editar</a> - 
-						        <a href='formArticles.php?Borrar=" . $row["ProductID"] . "' >Eliminar</a>";
+					echo       "<a class='button smaller' href='formArticles.php?Editar=" . $row["ProductID"] . "' >Editar</a>
+						        <a class='secondary-button smaller' href='formArticles.php?Borrar=" . $row["ProductID"] . "' >Eliminar</a>";
 				}
 				echo 	"</td>
 					</tr>";
