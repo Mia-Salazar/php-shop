@@ -30,7 +30,26 @@ button, .button {
 	padding: 10px 20px;
     border-radius: 5px;
     background-color: #0F044C;
+    border: 2px solid #0F044C;
     color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.secondary-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #0F044C;
+    font-size: 14px;
+    border: 2px solid #0F044C;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.smaller {
+    width: fit-content;
+    padding: 5px;
+    font-size: 14px;
 }
 
 a {
